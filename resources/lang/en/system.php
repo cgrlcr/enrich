@@ -1,0 +1,27 @@
+<?php
+return [
+
+    'auth_failed' => 'Authentication failed.',
+    'invalid_token' => 'Invalid token.',
+    'password_changed' => 'Password changed.',
+    'old_password_wrong' => 'The old password you have entered is incorrect.',
+    'bad_request' => 'Bad Request.',
+    'unauthorized' => 'Unauthorized.',
+    'insufficient_permissions' => 'Insufficient Authorization.',
+    'validation_error' => 'Validation Error.',
+    'success' => 'Success.',
+    'partially_success' => 'Partially successful.',
+    'failed_to_retrieve' => 'Failed to retrieve from database.',
+    'deleted' => 'Deleted.',
+    'restored' => 'Restored.',
+    'failed_to_delete' => 'Failed to delete.',
+    'not_found' => 'Not found.',
+    'already_exists' => 'Already exists.',
+    'token_timed_out' => 'The token has expired.',
+    'spam_check' => 'Please wait a little before you try again.',
+    'same_password' => 'The new password you entered is the same as your old password.',
+    'email_already_verified' => 'Your email address has already been verified.',
+    'user_not_verified' => 'User not verified.',
+    'verification_code_not_found' => 'Verification code not found.',
+    'individual_failed_to_save' => 'An error occured while registering the user.',
+];
