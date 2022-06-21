@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('token', 500)->unique()->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->index(['name', 'normalized_name']);
         });
     }
 

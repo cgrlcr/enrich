@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\adressController;
 use App\Http\Controllers\authController;
 use App\Http\Controllers\userController;
 use Illuminate\Http\Request;
@@ -33,10 +34,24 @@ Route::controller(authController::class)->group(function () {
 Route::controller(userController::class)->group(function () {
     Route::post('/user/new', 'store');
     Route::get('/users', 'index');
+    Route::get('/user/{user_id}', 'show')->where('id', '[0-9]+');
+    Route::put('/user/{user_id}', 'update')->where('id', '[0-9]+');
+    Route::delete('/user/delete/{user_id}', 'destroy')->where('id', '[0-9]+');;
 });
 
-Route::middleware(['jwt', 'auth:user'])->group(function () {
-    Route::get('/core/protected', function () {
-        echo 'core protected';
-    });
+Route::controller(adressController::class)->group(function () {
+    Route::post('/address/new', 'store');
+    Route::get('/address', 'index');
+    Route::get('/address/{address_id}', 'show')->where('id', '[0-9]+');
+    Route::put('/address/{address_id}', 'update')->where('id', '[0-9]+');
 });
+
+// Route::middleware(['jwt', 'auth:user'])->group(function () {
+//     Route::controller(userController::class)->group(function () {
+//         Route::put('/user/{user_id}', 'update')->where('id', '[0-9]+');
+//     });
+
+//     Route::get('/core/protected', function () {
+//         echo 'core protected';
+//     });
+// });

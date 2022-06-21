@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Core\Http\Middleware;
+namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Modules\Core\Libraries\JWT;
+use App\Libraries\JWT;
 
 class JWTMiddleware
 {

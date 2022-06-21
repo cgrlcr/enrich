@@ -46,7 +46,7 @@ class Kernel extends HttpKernel
         ],
 
         'jwt' => [
-            'token' => \Modules\Core\Http\Middleware\JWTMiddleware::class,
+            'token' => \App\Http\Middleware\JWTMiddleware::class,
         ],
     ];
 
@@ -70,7 +70,7 @@ class Kernel extends HttpKernel
     ];
 
     protected $middlewarePriority = [
-        \Modules\Core\Http\Middleware\JWTMiddleware::class,
+        \App\Http\Middleware\JWTMiddleware::class,
         \App\Http\Middleware\Authenticate::class,
         \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
