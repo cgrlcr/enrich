@@ -85,9 +85,6 @@ class JWT
             if (isset($key)) {
                 $user = $key->authable;
                 $authed = Auth::guard(Str::snake($key->authable_type))->login($user);
-                //App::setLocale('en');
-
-                App::setLocale($user->language);
             }
 
             return true;

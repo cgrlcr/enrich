@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Libraries\JWT;
 
-class authController extends Controller
+class AuthController extends Controller
 {
     protected $auth;
 
@@ -38,14 +38,14 @@ class authController extends Controller
             $user = $this->auth->user();
 
             if ($user->status === 'active') {
-                $tokens = Token::where('authable_id', $user->id)->where('authable_type', 'user')->where('status', '!=', 'revoked')->get();
+                $tokens = Token::where('authable_id', $user->id)->where('authable_type', 'User')->where('status', '!=', 'revoked')->get();
                 if (isset($tokens)) {
                     foreach ($tokens as $token) {
                         JWT::revoke($token->key);
                     }
                 }
 
-                $key = JWT::sign('user', $user->id, '+9 hours', [], $user->id, null);
+                $key = JWT::sign('User', $user->id, '+9 hours', [], $user->id, null);
                 $user->updateQuietly(['token' => $key]);
 
                 //Log::info('login', ['user_id' => $user->id, 'process' => 'login', 'ip' => $request->ip()]);
