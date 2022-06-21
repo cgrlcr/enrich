@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\adressController;
-use App\Http\Controllers\authController;
-use App\Http\Controllers\userController;
+use App\Http\Controllers\AdressController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,13 +25,13 @@ Route::get('hata', function (Request $request) {
     echo 'Sistemde bir hata oluştu.';
 });
 
-Route::controller(authController::class)->group(function () {
+Route::controller(AuthController::class)->group(function () {
     Route::post('/user/login', 'login');
     Route::post('/user/logout', 'logout');
     Route::post('user/check/token', 'checkToken');
 });
 
-Route::controller(userController::class)->group(function () {
+Route::controller(UserController::class)->group(function () {
     Route::post('/user/new', 'store');
     Route::get('/users', 'index');
     Route::get('/user/{user_id}', 'show')->where('id', '[0-9]+');
@@ -39,7 +39,7 @@ Route::controller(userController::class)->group(function () {
     Route::delete('/user/delete/{user_id}', 'destroy')->where('id', '[0-9]+');;
 });
 
-Route::controller(adressController::class)->group(function () {
+Route::controller(AdressController::class)->group(function () {
     Route::post('/address/new', 'store');
     Route::get('/address', 'index');
     Route::get('/address/{address_id}', 'show')->where('id', '[0-9]+');
@@ -49,6 +49,8 @@ Route::controller(adressController::class)->group(function () {
 // Route::middleware(['jwt', 'auth:user'])->group(function () {
 //     Route::controller(userController::class)->group(function () {
 //         Route::put('/user/{user_id}', 'update')->where('id', '[0-9]+');
+//Route::get('/users', 'index');
+
 //     });
 
 //     Route::get('/core/protected', function () {

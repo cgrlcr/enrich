@@ -9,14 +9,15 @@ use App\Models\User;
 use Auth;
 use Illuminate\Support\Arr;
 
-class userController extends Controller
+class UserController extends Controller
 {
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
-            'password' => ['required', 'min:6', 'required_with:password_confirmation', 'confirmed'], //regex:/^\(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6}$/
+            'password' => ['required', 'min:6', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/', 'required_with:password_confirmation', 'confirmed'], //regex:/^\(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6}$/
+
         ]);
 
         if ($validator->fails()) {

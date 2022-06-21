@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password', 200);
-
             $table->string('normalized_name', 30);
+            $table->enum('role', ['ADMIN', 'USER'])->default('USER');
             $table->enum('status', ['active', 'passive'])->default('active');
 
             $table->string('token', 500)->unique()->nullable();

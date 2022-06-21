@@ -6,7 +6,7 @@ use App\Models\Address;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class adressController extends Controller
+class AdressController extends Controller
 {
     public function store(Request $request)
     {
